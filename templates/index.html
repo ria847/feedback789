@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Rate your service</title>
+</head>
+<body>
+    <div class="text-center">
+        <img src="../static/img.png" alt="img" height="200" width="180" class="rounded mb-4 mt-4">
+        <h5>Please Fill the form</h5>
+    </div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            
+            {% endwith %}
+    <div class="container">
+        <form action="/submit" method="POST">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="customer" placeholder="Enter your name" class="form-control">
+            </div>
+            
+            <div class="form-group">
+                <label>Select Group</label>
+                <select name="group" id="" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Write something</label>
+                <textarea name="comments" rows="4" class="form-control" placeholder="Tell us something about you"></textarea>
+            </div>
+            <input type="submit" value="submit">Submit</input>
+        </form>
+    </div>
+</body>
+</html>
